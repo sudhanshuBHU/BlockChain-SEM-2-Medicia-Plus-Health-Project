@@ -1,0 +1,453 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8;
+
+contract HealthCare {
+    struct doctor {
+        string licenseId;
+        string name;
+        string specialization;
+        int256 contribution;
+        int256 finalRating;
+    }
+    struct patientNotification {
+        string to;
+        string from_name;
+        string from_id;
+        string problem;
+        string description;
+        string status;
+        int256 rating;
+        uint256 indexPatient;
+        uint256 indexDoctor;
+    }
+    struct doctorRating {
+        int256 finalRating;
+        int256 fee;
+        int256 time;
+        int256 countPatient;
+    }
+    struct report {
+        string to;
+        string from_name;
+        string from_id;
+        string problem;
+        string reports;
+        uint256 indexPatient;
+        uint256 indexDoctor;
+    }
+
+    // following 3 are the counters to track no of doctors,no of patients and no of notifications.
+    string[] doctorsID;
+    string[] patientsID;
+    string[] notificationId;
+
+    mapping(string => doctor) doctorDetails; // contains individual doctor details
+    mapping(string => string) doctorPassword; // contains id and password of doctors only
+    mapping(string => string) patientPassword; // contains id and password of patients only
+    mapping(string => patientNotification[]) notify_patient; //patients's notification display
+    mapping(string => report[]) reportArray; // it contains all the reports of patient
+    mapping(string => doctorRating) individualDoctorRating; //individually stores rating of doctor (including all fields i.e fee ,time and finalRating)
+
+    // new doctor registration
+    function newRegistrationDoctor(
+        string memory name,
+        string memory id,
+        string memory password,
+        string memory special
+    ) public returns (bool) {
+        doctorPassword[id] = password; // mapping to store password for easy access
+        doctorDetails[id] = doctor(id, name, special, 0, 30); // storing data in structure of doctor
+        doctorsID.push(id); // array to store all doctor IDs
+        individualDoctorRating[id].finalRating = 30; 
+        individualDoctorRating[id].fee = 30; 
+        individualDoctorRating[id].time = 30; 
+        individualDoctorRating[id].countPatient = 1; 
+        return true;
+    }
+
+    // doctor password checker
+    function checkPasswordDoctor(string memory id)
+        public
+        view
+        returns (string memory)
+    {
+        return doctorPassword[id];
+    }
+
+    // fetch details of doctor function
+    function getDoctorDetails(string memory id)
+        public
+        view
+        returns (
+            string memory,
+            string memory,
+            string memory,
+            int256,
+            int256
+        )
+    {
+        doctor memory temp = doctorDetails[id];
+        return (
+            temp.name,
+            temp.licenseId,
+            temp.specialization,
+            temp.contribution,
+            temp.finalRating
+        );
+    }
+
+    function fetchAllDoctorLength() public view returns (uint256) {
+        return doctorsID.length;
+    }
+
+    function fetchAllDoctorDetails(uint256 i)
+        public
+        view
+        returns (doctor memory)
+    {
+        return doctorDetails[doctorsID[i]];
+    }
+
+
+    //notification setter . displays at patient's profile
+    // called at doctor
+    function setNotificationPatient(
+        string memory to,
+        string memory from_id,
+        string memory prob,
+        string memory desc
+    ) public {
+        string memory from_name = doctorDetails[to].name;
+        int256 rating = doctorDetails[to].finalRating;
+
+        // finding length to store index
+        uint256 lenDoc = notify_patient[to].length;
+
+                // finding length
+        uint256 lenPat = notify_patient[from_id].length;
+
+        // doctor store copy
+        notify_patient[to].push(
+            patientNotification(
+                to, //it is doctor's id
+                from_name, // by mistake.... it is doctor's name
+                from_id, // it is patient's id
+                prob,
+                desc,
+                "pending",
+                rating,
+                lenPat,
+                lenDoc
+            )
+        );
+
+
+        // patient store copy
+        notify_patient[from_id].push(
+            patientNotification(
+                to,
+                from_name,
+                from_id,
+                prob,
+                desc,
+                "sent",
+                rating,
+                lenPat,
+                lenDoc
+            )
+        );
+    }
+
+    // notification getter -> patient profile
+    function getNotificationPatient(string memory id)
+        public
+        view
+        returns (patientNotification[] memory)
+    {
+        return notify_patient[id];
+    }
+
+    // new registration patient
+    function newRegistrationPatient(string memory id, string memory password)
+        public
+        returns (bool)
+    {
+        patientPassword[id] = password;
+        patientsID.push(id);
+        return true;
+    }
+
+    // password checker patient
+    function checkPasswordPatient(string memory id)
+        public
+        view
+        returns (string memory)
+    {
+        return patientPassword[id];
+    }
+
+    //reset patient password on request
+    function resetPatientPassword(string memory id,string memory password)public {
+        patientPassword[id] = password;
+    }
+
+    //reset doctor password on request
+    function resetDoctorPassword(string memory id,string memory password)public {
+        doctorPassword[id] = password;
+    }
+
+    //reports handler for patients given by doctors
+    // doctor also stores a copy
+
+    function reportSendHandlerPopupDoctor(string memory docId, string memory pid, string memory prob, string memory description, uint256 indexPat, uint256 indexDoc) public {
+        string memory from_name = doctorDetails[docId].name;
+        uint256 lenDoc = reportArray[docId].length;
+        uint256 lenPat = reportArray[pid].length;
+        // doctor copy
+        reportArray[docId].push(
+            report(pid, from_name, docId, prob, description,lenPat,lenDoc)
+        );
+
+        //patient copy
+        reportArray[pid].push(
+            report(pid, from_name, docId, prob, description, lenPat, lenDoc)
+        );
+
+        // update contribution count of doctor
+        int256 x = doctorDetails[docId].contribution;
+        x = x + 1;
+        doctorDetails[docId].contribution = x;
+
+        // setting status from approved to sent report
+        if (indexPat != 100) {
+        // doctor
+            notify_patient[docId][indexDoc].status = "Report sent";
+
+        // patient
+            notify_patient[pid][indexPat].status = "Report recieved";
+        }
+    }
+
+    // fetch reports
+    function getReportPatient(string memory id)
+        public
+        view
+        returns (report[] memory)
+    {
+        return reportArray[id];
+    }
+
+    // rating setter -> patient only (not doctor)
+    // called at patient
+    function setRating(
+        string memory id,
+        int256 feeRating,
+        int256 timeRating
+    ) public {
+        int256 x = individualDoctorRating[id].countPatient;
+        individualDoctorRating[id].countPatient = x+1;
+
+        int256 preTime = individualDoctorRating[id].time * x;
+        int256 preFee = individualDoctorRating[id].fee  * x;
+
+        preTime = (preTime + timeRating)/(x+1);
+        preFee = (preFee + feeRating)/(x+1);
+        int256 res = (preFee + preTime)/2;
+
+        // res = (res + doctorDetails[id].finalRating)/2;
+
+        individualDoctorRating[id].fee = preFee;
+        individualDoctorRating[id].time = preTime;
+        individualDoctorRating[id].finalRating = res;
+
+        doctorDetails[id].finalRating = res;
+        // update so that one cannot rate twice
+
+    }
+
+    //get ratings
+    function getRatingOfDoctor(string memory id) public view returns (int256,int256,int256) {
+        return (individualDoctorRating[id].finalRating ,individualDoctorRating[id].fee,individualDoctorRating[id].time);
+    }
+
+    //get all doctors rating idwise in one go
+    function fetchAllDoctorRating(uint256 i)
+        public
+        view
+        returns (doctorRating memory)
+    {
+        return individualDoctorRating[doctorsID[i]];
+    }
+
+    // when doctor approve the patient request and send some description
+    // below function handles notifications of doctor and patient as update status and description
+    function approveHandlerPopupDoctor(string memory docId,uint256 docIndex, string memory pid, uint256 pIndex, string memory description)public  {
+        //update at doctor notification
+        notify_patient[docId][docIndex].status = "Approved";
+        string memory temp= notify_patient[docId][docIndex].description;
+        // temp = string.concat(temp," *Doctor's Reply: ");
+        // temp = string.concat(temp,description);
+        temp = string(abi.encodePacked(temp, "** -> Doctor's reply: "));
+        temp = string(abi.encodePacked(temp, description));
+        notify_patient[docId][docIndex].description = temp;
+
+        //updation at patient notification
+        notify_patient[pid][pIndex].status = "Approved";
+        string memory temp2= notify_patient[pid][pIndex].description;
+        // temp2 = string.concat(temp2," *Doctor's Reply: ");
+        // temp2 = string.concat(temp2,description);
+        temp2 = string(abi.encodePacked(temp2, "** -> Doctor's reply: "));
+        temp2 = string(abi.encodePacked(temp2, description));
+        notify_patient[pid][pIndex].description = temp2;
+
+    }
+
+    // when doctor rejects the patient request
+    function rejectHandlerPopupDoctor(string memory docId, uint256 docIndex, string memory pid, uint256 pIndex, string memory description)public {
+        notify_patient[docId][docIndex].status = "Rejected";
+        notify_patient[pid][pIndex].status = "Rejected";
+
+        string memory temp= notify_patient[docId][docIndex].description;
+        temp = string(abi.encodePacked(temp, "** -> Doctor's reply: "));
+        temp = string(abi.encodePacked(temp, description));
+        notify_patient[docId][docIndex].description = temp;
+
+        string memory temp2= notify_patient[pid][pIndex].description;
+        temp2 = string(abi.encodePacked(temp2, "** -> Doctor's reply: "));
+        temp2 = string(abi.encodePacked(temp2, description));
+        notify_patient[pid][pIndex].description = temp2;
+    }
+
+    // cross check function handler
+    function crossCheckHandler(string memory pid, string memory problem, string memory rep, string memory did,string memory victimName)public  {
+        // add in patient's notification
+        string memory temp = doctorDetails[did].name;
+        int256 fRate = doctorDetails[did].finalRating;
+        uint256 lenPat = notify_patient[pid].length;
+        uint256 lenDoc = notify_patient[did].length;
+        string memory des = victimName;
+        des = string(abi.encodePacked( "** -> crossChecked Doctor's name: ", des));
+        des = string(abi.encodePacked( des,"  **  "));
+        des = string(abi.encodePacked(des,rep));
+        notify_patient[pid].push(
+            patientNotification(
+                did,
+                temp,
+                pid,
+                problem,
+                des,
+                "crossCheckRequest",
+                fRate,
+                lenPat,
+                lenDoc
+            )
+        );
+        // add in doctor's notification
+           notify_patient[did].push(
+            patientNotification(
+                did,
+                temp,
+                pid,
+                problem,
+                rep,
+                "crossCheckRequest",
+                fRate,
+                lenPat,
+                lenDoc
+            )
+        );
+    }
+
+    // crossCheck response sender
+    function crossCheckResponseSender(string memory pid,uint256 lenPat, string memory description, string memory did, uint256 lenDoc)public {
+        //patient's notification
+        notify_patient[pid][lenPat].status = "checked OK";
+        string memory temp = notify_patient[pid][lenPat].description;
+        string memory temp2 = string(abi.encodePacked(description,"  **  "));
+        temp = string(abi.encodePacked(temp2,temp));
+        notify_patient[pid][lenPat].description = temp;
+
+        //doctor's notification
+        notify_patient[did][lenDoc].status = "checked OK";
+        notify_patient[did][lenDoc].description = temp;
+
+        // contribution count updation
+        int256 x = doctorDetails[did].contribution;
+        x = x + 1;
+        doctorDetails[did].contribution = x;
+
+          // doctor copy
+        string memory from_name = doctorDetails[did].name;
+        string memory p = notify_patient[pid][lenPat].problem;
+        uint256 lenDocReport = reportArray[did].length;
+        reportArray[did].push(
+            report(pid, from_name, did, p, temp,0,lenDocReport)
+        );
+
+    }
+
+    // cross check reject sender
+    function crossCheckRejectSender(string memory pid,uint256 lenPat, string memory description, string memory did, uint256 lenDoc)public  {
+         //patient's notification
+        notify_patient[pid][lenPat].status = "checked False";
+        string memory temp = notify_patient[pid][lenPat].description;
+        string memory temp2 = string(abi.encodePacked(description,"  **  "));
+        temp = string(abi.encodePacked(temp2,temp));
+        notify_patient[pid][lenPat].description = temp;
+
+        //doctor's notification
+        notify_patient[did][lenDoc].status = "checked False";
+        notify_patient[did][lenDoc].description = temp;
+
+        string memory from_name = doctorDetails[did].name;
+        uint256 lenDocReport = reportArray[did].length;
+        string memory p = notify_patient[pid][lenPat].problem;
+        // doctor copy
+        reportArray[did].push(
+            report(pid, from_name, did, p, description,0,lenDocReport)
+        );
+
+        // update contribution count of doctor
+        int256 x = doctorDetails[did].contribution;
+        x = x + 1;
+        doctorDetails[did].contribution = x;
+
+    }
+
+
+    // connection checker
+    function checkWalletStatus() public pure returns (bool) {
+        return true;
+    }
+
+
+    //developer zone
+
+    function SET_only_for_developer() public {
+        newRegistrationDoctor("Dr Berlin Pandey", "D1", "123", "cardiologist");
+        newRegistrationDoctor("Dr Ayesha Khan", "D2", "123", "cardiologist");
+        newRegistrationDoctor("Dr Rajesh Kapoor", "D3", "123", "cardiologist");
+        newRegistrationDoctor("Dr Pooja Desai", "D25", "123", "cardiologist");
+        newRegistrationDoctor("Dr Vikas Singh", "D4", "123", "cardiologist");
+
+        newRegistrationDoctor("Dr Suresh Gupta", "D5", "123", "pulmonologist");
+        newRegistrationDoctor("Dr Anil Mehta", "D6", "123", "pulmonologist");
+        newRegistrationDoctor("Dr Sunita Sharma", "D7", "123", "pulmonologist");
+        newRegistrationDoctor("Dr Vishal Rai", "D8", "123", "pulmonologist");
+        newRegistrationDoctor("Dr Reena Joshi", "D9", "123", "pulmonologist");
+
+        newRegistrationDoctor("Dr Anjali Mehta", "D10", "123", "neurologist");
+        newRegistrationDoctor("Dr Rohan Nair", "D11", "123", "neurologist");
+        newRegistrationDoctor("Dr Neha Kulkarni", "D12", "123", "neurologist");
+        newRegistrationDoctor("Dr Arvind Patel", "D13", "123", "neurologist");
+
+
+        newRegistrationDoctor("Dr Preeti Sharma", "D15","123","dermatologist");
+        newRegistrationDoctor("Dr Sanjay Verma", "D16", "123", "dermatologist");
+        newRegistrationDoctor("Dr Anisha Roy", "D17", "123", "dermatologist");
+
+        newRegistrationDoctor("Dr Anil Menon", "D20", "123", "physician");
+        newRegistrationDoctor("Dr Kavita Rao", "D21", "123", "physician");
+        newRegistrationDoctor("Dr Vikram Singh", "D22", "123", "physician");
+    }
+}

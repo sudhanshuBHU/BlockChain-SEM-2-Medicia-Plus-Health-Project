@@ -1,0 +1,966 @@
+@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,100;0,300;0,400;0,500;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,700;1,800;1,900&family=Graduate&display=swap');
+
+.image {
+    width: 70vw;
+    height: 38rem;
+}
+
+.caroCaption {
+    background-color: rgba(255, 255, 255, 0.262);
+    backdrop-filter: blur(1px);
+    border-radius: 1rem;
+    color: rgb(0, 0, 0);
+    font-family: 'Graduate', sans-serif;
+}
+
+@media only screen and (max-width: 600px) {
+    .carousel {
+        width: 103%;
+    }
+}
+
+#div1 {
+    display: flex;
+    flex-direction: column;
+    border-bottom: none;
+    align-items: center;
+    justify-content: center;
+    background: #ecf0f3;
+    height: 7rem;
+}
+
+#h2div1 {
+    font-family: "Algrey";
+}
+
+#sign-btn1 {
+    width: 12rem;
+    height: 3rem;
+    font-weight: 600;
+}
+
+.profilePatWrapper {
+    font-family: "Algrey Sans";
+    height: auto;
+    background: #ecf0f3;
+}
+
+.g1 {
+    text-align: left;
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+.g1Doctor{
+    text-align: left;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+#g1-color {
+    color: red;
+}
+
+.contribution {
+    background: #ecf0f3;
+    /* box-shadow: 8px 8px 20px #cbced1, -8px -8px 20px #cbced1; */
+    margin-top: 0.5rem;
+}
+
+.contriHeading {
+    border-bottom: 1px solid black;
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: 7% 18% 15% 30% 15% 15%;
+}
+
+.tupple {
+    border-bottom: 1px solid black;
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: 7% 18% 15% 30% 15% 15%;
+}
+
+.column {
+    padding: 1rem;
+}
+
+.topRight {
+    display: flex;
+    justify-content: end;
+    padding-top: 1rem;
+    padding-right: 2rem;
+    gap: 2rem;
+}
+
+.buttonKeeper {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    margin-left: 2rem;
+}
+
+.addPatientForm {
+    border-radius: 20px;
+    box-sizing: border-box;
+    background: #ecf0f3;
+    box-shadow: 8px 8px 20px #cbced1, -8px -8px 20px #cbced1;
+    margin-top: 0.5rem;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.formdoc {
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+formDoc1 {
+    margin-top: 1.5rem;
+    font-size: 0.8rem;
+}
+
+.add {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    color: #6c7587;
+    height: 2rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border: 3px solid rgba(255, 255, 255, 0);
+    outline: none;
+    background-color: #ebecf0;
+    transition: all 250ms ease-in-out;
+    box-shadow: 8px 8px 12px -2px rgba(72, 79, 96, 0.4), -6px -6px 12px -1px white;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.add:hover {
+    box-shadow: none;
+    border-color: rgba(255, 255, 255, 0.5);
+    color: #1DA1F2;
+}
+
+.add:active {
+    box-shadow: inset -4px -4px 6px -1px white, inset 2px 2px 8px -1px rgba(72, 79, 96, 0.5);
+    border-color: rgba(255, 255, 255, 0);
+}
+
+.clearButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.submitResetButton {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 1.5rem;
+}
+
+.submitDoc {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    color: white;
+    height: 2rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border: 3px solid rgba(255, 255, 255, 0);
+    outline: none;
+    background-color: #1DA1F2;
+    transition: all 250ms ease-in-out;
+    box-shadow: 8px 8px 12px -2px rgba(72, 79, 96, 0.4);
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.submitDoc:hover {
+    box-shadow: none;
+    border-color: rgba(255, 255, 255, 0.5);
+    color: #ebecf0;
+}
+
+.notifyHeader {
+    padding-top: 0;
+    padding-bottom: 1rem;
+    display: grid;
+    grid-template-columns: 5% 15% 10% 20% 20% 30%;
+    border-bottom: 1px solid black;
+}
+
+#activeDiv {
+    border-bottom: 1px solid #1DA1F2;
+    color: #1DA1F2;
+}
+
+.nTupple {
+    display: grid;
+    grid-template-columns: 5% 15% 10% 20% 20% 30%;
+    border-bottom: 1px solid black;
+}
+
+
+
+
+.lookingFor {
+    display: flex;
+}
+
+.wrapperPatient {
+    display: flex;
+    justify-content: center;
+}
+
+.headerDoc {
+    display: grid;
+    grid-template-columns: 20% 20% 38% 42%;
+    margin-bottom: 1rem;
+}
+
+.feeAndTimeRateContainer {
+    width: 30rem;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.finalRating {
+    /* grid-area: finalRating; */
+    color: #1DA1F2;
+}
+
+.nameCol {
+    /* grid-area: nameCol; */
+    color: rgb(232, 47, 84);
+}
+
+.specCol {
+    color: rgb(24, 148, 107);
+}
+
+.radio {
+    height: 1.5rem;
+    width: 1.5rem;
+}
+
+.doctorSubmit {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+#selectionCard {
+    margin-top: 1rem;
+}
+
+#reportButton {
+    margin-top: 0.3rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    color: coral;
+}
+
+#reportButton:hover {
+    color: #1DA1F2;
+}
+
+
+.topRightDoctor {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1rem;
+    padding-right: 2rem;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    border-top: 2px solid #1A8EFD;
+}
+
+.counter-wrapper {
+    display: flex;
+    border: 2px solid #1DA1F2;
+    height: 7rem;
+    align-items: center;
+    justify-content: space-around;
+    background: #ecf0f3;
+    padding-top: 0.6rem;
+}
+
+.counter-name {
+    font-family: "Poppins";
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: rgb(10, 42, 39);
+    color: #6c7587;
+}
+
+.counter-count {
+    color: #1DA1F2;
+}
+
+input {
+    caret-color: red;
+}
+
+.signin1 {
+    font-family: "Algrey Sans";
+    width: 30rem;
+    height: 30rem;
+    border-radius: 20px;
+    padding: 40px;
+    box-sizing: border-box;
+    background: #ecf0f3;
+    box-shadow: 8px 8px 20px #cbced1, -8px -8px 20px #cbced1;
+}
+
+
+.signin-title {
+    margin-top: 10px;
+    font-weight: 900;
+    font-size: 1.8rem;
+    color: #1DA1F2;
+    letter-spacing: 1px;
+}
+
+.sign-manu1 {
+    display: flex;
+    border: 2px solid #1DA1F2;
+    height: 45rem;
+    align-items: center;
+    justify-content: center;
+    background: #ecf0f3;
+}
+
+.inputs {
+    text-align: left;
+    margin-top: 30px;
+}
+
+label,
+input,
+.btn-submit {
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+}
+
+label {
+    margin-bottom: 4px;
+}
+
+label:nth-of-type(2) {
+    margin-top: 12px;
+}
+
+input::placeholder {
+    color: gray;
+}
+
+input {
+    background: #ecf0f3;
+    padding: 10px;
+    padding-left: 20px;
+    height: 50px;
+    font-size: 14px;
+    border-radius: 50px;
+    /* box-shadow: inset 6px 6px 6px #cbced1, inset -6px -6px 6px white; */
+}
+
+.btn-submit {
+    color: white;
+    margin-top: 20px;
+    background: #1DA1F2;
+    height: 40px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 900;
+    box-shadow: 6px 6px 6px #cbced1, -6px -6px 6px white;
+    transition: 0.5s;
+}
+
+.btn-submit:hover {
+    box-shadow: none;
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+
+h1 {
+    top: 0;
+    left: 0;
+}
+
+.form-title1 {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.form-label1 {
+    margin-top: 1.5rem;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.form-label2 {
+    margin-top: 1rem;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+#submitloginDoc {
+    margin-top: 2.5rem;
+}
+
+.newDoctor {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.loginList-container {
+    display: flex;
+    font-family: "Algrey Sans";
+    border: 2px solid #1DA1F2;
+    height: 45rem;
+    align-items: center;
+    justify-content: space-around;
+    background: #ecf0f3;
+}
+
+.inner-container {
+    font-size: 1.3rem;
+    width: 35rem;
+    height: 30rem;
+    border-radius: 20px;
+    padding: 40px;
+    box-sizing: border-box;
+    background: #ecf0f3;
+    box-shadow: 8px 8px 20px #cbced1, -8px -8px 20px #cbced1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+}
+
+#content-loginList {
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-decoration: underline red;
+}
+
+#loginList {
+    font-size: 1rem;
+    height: 2.5rem;
+}
+
+h2 {
+    text-decoration: underline red;
+}
+
+.main-container {
+    width: 100vw;
+    height: 100vh;
+    background-color: #ecf0f3;
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+}
+
+.carouselAndSide {
+    display: grid;
+    grid-template-columns: 70% auto;
+}
+
+
+.navbar-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 4rem;
+    width: 100vw;
+    background: #ecf0f3;
+    box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
+    border-bottom: 1px solid #1DA1F2;
+}
+
+.leftLogo {
+
+    height: 2.5rem;
+    box-shadow: 4px 4px 3px #cbced1, -4px -4px 3px #cbced1;
+}
+
+.leftSide {
+    margin-left: 1rem;
+    display: flex;
+    align-items: center;
+    height: 3rem;
+    cursor: pointer;
+}
+
+#header {
+    /* font-size: 1.7rem; */
+    margin-left: 1rem;
+    font-weight: 900;
+    font-size: 2.2rem;
+    color: #1DA1F2;
+    letter-spacing: 1px;
+    font-family: "Alegreya";
+}
+
+#rightSide {
+    display: flex;
+    gap: 1rem;
+    margin-right: 1rem;
+    font-family: "Alegreya";
+}
+
+.about {
+    display: flex;
+    font-family: "Algrey sans";
+    align-items: center;
+    font-size: 1rem;
+    color: #6c7587;
+    height: 2rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border: 3px solid rgba(255, 255, 255, 0);
+    outline: none;
+    text-align: center;
+    background-color: #ebecf0;
+    transition: all 250ms ease-in-out;
+    box-shadow: 3px 3px 5px -3px rgba(72, 79, 96, 0.4), -3px -3px 5px -2px white;
+    cursor: pointer;
+    text-decoration: none;
+}
+.about:hover {
+    color: #1DA1F2;
+    border-bottom: 1px solid #1DA1F2;
+    cursor: pointer;
+}
+
+body {
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #ecf0f3;
+    font-family: poppins;
+}
+
+.about:active {
+    box-shadow: inset -4px -4px 6px -1px white, inset 2px 2px 8px -1px rgba(72, 79, 96, 0.5);
+    border-color: rgba(255, 255, 255, 0);
+}
+
+.textareaApprove {
+    height: 5rem;
+    width: 25rem;
+    padding: 1rem;
+}
+
+.popupContainerCross {
+    background-color: #ecf0f3;
+    border: 1px solid blueviolet;
+    gap: 2rem;
+    padding: 2rem;
+    width: 40rem;
+    margin-left: 30%;
+    margin-top: 5%;
+    border-radius: 15px;
+}
+
+.wrapperPatientCross {
+    /* border: 1px solid red; */
+    width: 30rem;
+}
+
+.wrapperPatientCrossList {
+    /* border: 1px solid blue; */
+    width: 40rem;
+    height: auto;
+}
+
+.popupDivWraper {
+    height: 100vh;
+    width: 100vw;
+    background-color: rgb(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    position: fixed;
+    right: 0;
+    top: 0;
+}
+
+.popupContainer {
+    /* height: 20rem;
+    width: 30rem; */
+    background-color: #ecf0f3;
+    position: fixed;
+    left: 35%;
+    top: 35%;
+    border-radius: 1rem;
+    padding: 1rem;
+    border: 1px solid black;
+}
+.popupHeader{
+    display: flex;
+    justify-content:space-between;
+}
+.popupForm{
+    margin-top: 1rem;
+}
+.popupFormHeading{
+    font-weight: bold;
+    font-size: medium;
+}
+#sliderText{
+    translate: -2rem;
+    font-weight: bold;
+}
+.slider{
+    appearance: none;
+    background: aqua;
+    height: 0.1rem;
+    width: 20rem;
+}
+.sliderContainer{
+    display: flex;
+    justify-content: space-between;
+}
+.popupContainerRating {
+    height: 18rem;
+    width: 30rem;
+    background-color: #ecf0f3;
+    position: fixed;
+    left: 35%;
+    top: 35%;
+    border-radius: 1rem;
+    padding: 1rem;
+    border: 1px solid black;
+}
+#fees{
+    margin-top: 1.5rem;
+}
+#rating-btn{
+    margin-top: 2rem;
+    color: rgb(255, 255, 255);
+    background-color: rgb(22, 125, 151);
+}
+.profileDocWrapper {
+    font-family: "Algrey Sans";
+    height: 100vh;
+    width: 100vw;
+    background: #ecf0f3;
+    /* border: 1px solid red; */
+}
+
+.profileNav {
+    background: #ecf0f3;
+    margin-top: 0.5rem;
+    border-bottom: 1px solid #1A8EFD;
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding-left: 4rem;
+    row-gap: 1rem;
+}
+
+#profileId{
+    color: red;
+}
+#profileSpec{
+    color: rgb(35, 170, 158);
+}
+
+.columnDoc {
+    /* border: 1px solid black; */
+    padding-left: 1rem;
+}
+
+.logOut {
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+    margin-right: 2rem;
+}
+
+.logOut:hover {
+    color: red;
+}
+
+
+
+.addPatientFormDoc {
+    border-radius: 20px;
+    box-sizing: border-box;
+    background: #ecf0f3;
+    /* box-shadow: 8px 8px 20px #cbced1, -8px -8px 20px #cbced1; */
+    margin-top: 0.5rem;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.signinDoctor {
+    width: 35rem;
+    /* height: 39rem; */
+    border-radius: 20px;
+    padding: 40px;
+    box-sizing: border-box;
+    background: #ecf0f3;
+    border: 1px solid #1A8EFD;
+    box-shadow: 8px 8px 20px #cbced1, -8px -8px 20px #cbced1;
+}
+
+.formdoc {
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+formDoc1 {
+    margin-top: 1.5rem;
+    font-size: 0.8rem;
+}
+
+.add {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    color: #6c7587;
+    height: 2rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border: 3px solid rgba(255, 255, 255, 0);
+    outline: none;
+    background-color: #ebecf0;
+    transition: all 250ms ease-in-out;
+    box-shadow: 8px 8px 12px -2px rgba(72, 79, 96, 0.4), -6px -6px 12px -1px white;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.add:hover {
+    box-shadow: none;
+    border-color: rgba(255, 255, 255, 0.5);
+    color: #1DA1F2;
+}
+
+.add:active {
+    box-shadow: inset -4px -4px 6px -1px white, inset 2px 2px 8px -1px rgba(72, 79, 96, 0.5);
+    border-color: rgba(255, 255, 255, 0);
+}
+
+.clearButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.submitResetButton {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 1.5rem;
+}
+
+.submitDoc {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    color: white;
+    height: 2rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border: 3px solid rgba(255, 255, 255, 0);
+    outline: none;
+    background-color: #1DA1F2;
+    transition: all 250ms ease-in-out;
+    box-shadow: 8px 8px 12px -2px rgba(72, 79, 96, 0.4);
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.submitDoc:hover {
+    box-shadow: none;
+    border-color: rgba(255, 255, 255, 0.5);
+    color: #ebecf0;
+}
+
+.notifyHeaderDoc {
+    display: grid;
+    grid-template-columns: 5% 15% 13% 20% 30% 17%;
+    border-bottom: 1px solid black;
+    padding: 1rem;
+}
+
+#activeDiv {
+    border-bottom: 1px solid #1DA1F2;
+    color: #1DA1F2;
+}
+
+.nTuppleDoc {
+    display: grid;
+    grid-template-columns: 5% 15% 13% 20% 30% 17%;
+    border-bottom: 1px solid black;
+    padding: 1rem;
+
+}
+.signContainer-wrapper {
+    display: flex;
+    flex-direction: column;
+    /* border: 2px solid #1DA1F2; */
+    /* height: 100vh; */
+    align-items:center;
+    justify-content:start;
+    background: #ecf0f3;
+    font-family: "Algrey";
+    /* background-image: url('./assests/enquiry.jpeg'); */
+}
+#sign-btn{
+    width: 9rem;
+    margin-top: 2rem;
+}
+.signContainerPara{
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.signin{
+    font-family: "Algrey Sans";
+    height: 42rem;
+    width: 40rem;
+}
+.passwordErrorMsg{
+    color: red;
+}
+.innerDiv{
+    height: 50rem;
+    display: flex;
+    border: 2px solid #1DA1F2;
+    align-items: center;
+    justify-content: center;
+    background: #ecf0f3;
+}
+.logDoc{
+    text-align: center;
+    margin-top: 1.5rem;
+}
+.signinDoc{
+    width: 30rem;
+    /* height: 39rem; */
+    border-radius: 20px;
+    padding: 40px;
+    box-sizing: border-box;
+    background: #ecf0f3;
+    box-shadow: 8px 8px 20px #cbced1, -8px -8px 20px #cbced1;
+}
+.form-group-select{
+    display: flex;
+    margin-right: 2rem;
+}
+
+
+input {
+  caret-color: red;
+}
+
+.signin {
+  width: 30rem;
+  height: 39rem;
+  border-radius: 20px;
+  padding: 40px;
+  box-sizing: border-box;
+  background: #ecf0f3;
+  box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
+}
+
+
+.signin-title {
+  margin-top: 10px;
+  font-weight: 900;
+  font-size: 1.8rem;
+  color: #1DA1F2;
+  letter-spacing: 1px;
+}
+.sign-manu{
+    display: flex;
+    /* border: 2px solid #1DA1F2; */
+    height: 40rem;
+    align-items: center;
+    justify-content: center;
+    background: #ecf0f3;
+}
+
+.inputs {
+  text-align: left;
+  margin-top: 30px;
+}
+
+label, input, .btn-submit {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: none;
+  outline: none;
+  box-sizing: border-box;
+}
+
+label {
+  margin-bottom: 4px;
+}
+
+label:nth-of-type(2) {
+  margin-top: 12px;
+}
+
+input::placeholder {
+  color: gray;
+}
+
+input {
+  background: #ecf0f3;
+  padding: 10px;
+  padding-left: 20px;
+  height: 50px;
+  font-size: 14px;
+  border-radius: 50px;
+  /* box-shadow: inset 6px 6px 6px #cbced1, inset -6px -6px 6px white; */
+}
+
+.btn-submit {
+  color: white;
+  margin-top: 20px;
+  background: #1DA1F2;
+  height: 40px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 900;
+  box-shadow: 6px 6px 6px #cbced1, -6px -6px 6px white;
+  transition: 0.5s;
+}
+
+.btn-submit:hover {
+  box-shadow: none;
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+h1 {
+  top: 0;
+  left: 0;
+}
+.sign-manu1{
+    font-family: 'Algrey';
+}
