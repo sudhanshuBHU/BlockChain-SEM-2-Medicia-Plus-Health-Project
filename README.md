@@ -18,10 +18,6 @@ We used blockchain to maintain immutability.
 
 ## Screenshots
 
-### Information Section
-
-![Health-Plus Image-2](https://i.postimg.cc/zvRJY4TF/Health-Plus-Image2.png)
-
 ### About Section
 
 ![Health-Plus Image-3](https://i.postimg.cc/8zGrwbV0/Health-Plus-Image3.png)
@@ -29,10 +25,6 @@ We used blockchain to maintain immutability.
 ### Why Choose Health Plus?
 
 ![Health-Plus Image-4](https://i.postimg.cc/fknMz5Kn/Health-Plus-Image4.png)
-
-### Reviews Section
-
-![Health-Plus Image-5](https://i.postimg.cc/xjkHdCRt/Health-Plus-Image5.png)
 
 ### Doctors Section
 
