@@ -30,8 +30,4 @@ We used blockchain to maintain immutability.
 
 ![Health-Plus Image-6](https://i.postimg.cc/8PM6h0xv/Health-Plus-Image6.png)
 
-### Footer Section
-
-![Health-Plus Image-7](https://i.postimg.cc/sftWGrHy/Health-Plus-Image7.png)
-
 Contributions are welcome! If you find a bug or have a feature request, please open an issue or submit a pull request.
