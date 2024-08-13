@@ -1,6 +1,6 @@
 # Health Plus
 
-Welcome to the Health Plus project repository! This is a React-based website aimed at providing accessible and personalized healthcare services to users. The website allows users to connect with expert doctors, schedule appointments, and receive expert medical advice.
+Welcome to the Medicia Plus project repository! This is a React-based website aimed at providing good doctors with their requirements. They can crosscheck their reports with other experts.
 
 ## Project Overview
 
@@ -46,7 +46,3 @@ Welcome to the Health Plus project repository! This is a React-based website aim
 ![Health-Plus Image-7](https://i.postimg.cc/sftWGrHy/Health-Plus-Image7.png)
 
 Contributions are welcome! If you find a bug or have a feature request, please open an issue or submit a pull request.
-
-## License
-
-This project is licensed under the [MIT License](./LICENSE "Project LICENSE").
