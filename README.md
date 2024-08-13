@@ -1,11 +1,13 @@
 # Health Plus
 
 Welcome to the Medicia Plus project repository! This is a React-based website aimed at providing good doctors with their requirements. They can crosscheck their reports with other experts.
+We used Solidity for Backend and we deployed Contract on local Ganache.
+We used blockchain to maintain immutability.
 
 ## Project Overview
 
 - **Framework**: React.js
-- **Deployment**: GitHub Pages
+- **Backend**: Solidity and Node.js
 - **Libraries**: React-Toastify, React Router DOM, FontAwesomeIcon, React-Sweetalert2
 
 ## Features
@@ -13,13 +15,8 @@ Welcome to the Medicia Plus project repository! This is a React-based website ai
 - Easily schedule appointments with the specialists.
 - Responsive UI design for seamless user experience across devices.
 - Utilizes React-Toastify and sweetalert2 for notifications, React Router DOM for page routing, and FontAwesomeIcon for icons.
-- Deployed using GitHub Pages for easy access and sharing.
 
 ## Screenshots
-
-### Hero Section
-
-![Health-Plus Image-1](https://i.postimg.cc/0Q4839KN/Health-Plus-Image1.png)
 
 ### Information Section
 
