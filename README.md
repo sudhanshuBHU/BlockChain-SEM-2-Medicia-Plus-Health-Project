@@ -1,4 +1,4 @@
-# Health Plus
+# Medicia Plus
 
 Welcome to the Medicia Plus project repository! This is a React-based website aimed at providing good doctors with their requirements. They can crosscheck their reports with other experts.
 We used Solidity for Backend and we deployed Contract on local Ganache.
